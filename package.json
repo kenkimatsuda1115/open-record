@@ -1,0 +1,20 @@
+{
+	"devDependencies": {
+		"husky": "^9.1.6",
+		"lint-staged": "^15.2.10"
+	},
+	"lint-staged": {
+  "front/**/*.ts?(x)": [
+    "cd front && tsc --noEmit",
+    "cd front && eslint --fix",
+    "cd front && prettier --write",
+    "cd front && jest --bail --findRelatedTests"
+  ],
+  "backend/**/*.ts": [
+    "cd backend && tsc --noEmit",
+    "cd backend && eslint --fix",
+    "cd backend && prettier --write",
+    "cd backend && jest --bail --findRelatedTests"
+    ]
+  }
+}
