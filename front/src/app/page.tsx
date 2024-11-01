@@ -71,7 +71,7 @@ export default function Home() {
     },
   };
 
-  const isError: number = false;
+  const isError = false;
   const LOGIN_ERROR_MESSAGE = "ログインに失敗しました。";
   const { username, setUsername, password, setPassword, error, login, signUp } =
     useLogin();
