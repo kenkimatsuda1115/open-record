@@ -1,0 +1,192 @@
+"use client";
+import styles from "./page.module.css";
+import Button from "./components/ui/Button/Button";
+import Footer from "./components/ui/Footer/Footer";
+import { useLogin } from "./page.hook";
+
+/**
+ * ログイン画面
+ * - ユーザー名とパスワードを入力してログインする
+ * - 新規登録ボタンを押すと新規登録画面に遷移する
+ * TODO: CSSをtailwindに統一する
+ * TODO: ログインAPIを作成する
+ */
+export default function Home() {
+  const inputStyles: { [key: string]: React.CSSProperties } = {
+    username: {
+      width: "300px",
+      color: "#ff0000",
+      backgroundColor: "#ffe6e6",
+      border: "1px solid #ffcccc",
+      borderRadius: "5px",
+      padding: "10px",
+      gap: "10px",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "flex-end",
+    },
+    password: {
+      width: "300px",
+      color: "#0000ff",
+      backgroundColor: "#e6f2ff",
+      border: "1px solid #cce0ff",
+      borderRadius: "5px",
+      padding: "10px",
+      gap: "10px",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "flex-end",
+    },
+    loginForm: {
+      color: "#000000",
+      backgroundColor: "#ffffff",
+      border: "1px solid #000000",
+      borderRadius: "5px",
+      padding: "10px",
+      gap: "10px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    // 入力フォームエリア
+    inputArea: {
+      gap: "10px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    errorMessage: {
+      color: "#ff0000",
+      fontSize: "18px",
+      display: "flex",
+    },
+    signUpButton: {
+      color: "#000000",
+      backgroundColor: "#ffffff",
+      border: "1px solid #000000",
+      borderRadius: "5px",
+      padding: "2px 10px",
+      gap: "10px",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    titleGroup: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "10px",
+      padding: "10px",
+    },
+    title: {
+      fontSize: "36px",
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+    description: {
+      fontSize: "18px",
+      fontWeight: "normal",
+      textAlign: "center",
+    },
+    subTitle: {
+      fontSize: "18px",
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+  };
+
+  const isError = false;
+  const LOGIN_ERROR_MESSAGE = "ログインに失敗しました。";
+  const { username, setUsername, password, setPassword, error, login, signUp } =
+    useLogin();
+
+  return (
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <div className={styles.loginContainer}>
+          {/* <div className={styles.imageContainer}>
+            <Image
+              src="/next.png"
+              alt="Login Image"
+              width={300}
+              height={300}
+              priority
+            />
+          </div> */}
+          <div style={inputStyles.titleGroup}>
+            <div style={inputStyles.title}>Open Record</div>
+            <div style={inputStyles.description}>
+              オープンレコードは、様々な記録を管理するシステムです。
+            </div>
+            <div style={inputStyles.subTitle}>ログイン</div>
+          </div>
+
+          <form className={styles.loginForm} style={inputStyles.inputArea}>
+            <div className={styles.inputGroup} style={inputStyles.username}>
+              <label htmlFor="username">ユーザー名</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className={styles.inputGroup} style={inputStyles.password}>
+              <label htmlFor="password">パスワード</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <Button type="submit" style={inputStyles.loginForm} onClick={login}>
+              ログイン
+            </Button>
+            {isError && (
+              <div style={inputStyles.errorMessage}>{LOGIN_ERROR_MESSAGE}</div>
+            )}
+            <Button style={inputStyles.signUpButton} onClick={signUp}>
+              新規登録
+            </Button>
+          </form>
+        </div>
+      </main>
+      <footer className={styles.footer}>
+        <Footer />
+      </footer>
+      {/* <footer className={styles.footer}>
+        <a href="https://jser.info/" target="_blank" rel="noopener noreferrer">
+          <Image
+            aria-hidden
+            src="/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          https://jser.info/
+        </a>
+        <a href="https://zenn.dev/" target="_blank" rel="noopener noreferrer">
+          <Image
+            aria-hidden
+            src="/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          https://zenn.dev/
+        </a>
+      </footer> */}
+    </div>
+  );
+}
