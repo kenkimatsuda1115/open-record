@@ -4,13 +4,13 @@ import Image from "next/image";
 import styles from "../../app/page.module.css";
 // import useSignUp from "../../app/hooks/signUp.hook";
 import Button from "../../app/components/ui/Button/Button";
-
+import Footer from "../../app/components/ui/Footer/Footer";
 export default function SignUp() {
   // const { username, setUsername, email, setEmail, password, setPassword, passwordConfirm, setPasswordConfirm, signUp, goToLogin } = useSignUp();
 
   const inputStyles: { [key: string]: React.CSSProperties } = {
     username: {
-      width: "100%",
+      width: "300px",
       color: "#ff0000",
       backgroundColor: "#ffe6e6",
       border: "1px solid #ffcccc",
@@ -23,7 +23,7 @@ export default function SignUp() {
       justifyContent: "flex-end",
     },
     email: {
-      width: "100%",
+      width: "300px",
       color: "#00ff00",
       backgroundColor: "#e6ffe6",
       border: "1px solid #ccffcc",
@@ -36,7 +36,7 @@ export default function SignUp() {
       justifyContent: "flex-end",
     },
     password: {
-      width: "100%",
+      width: "300px",
       color: "#0000ff",
       backgroundColor: "#e6f2ff",
       border: "1px solid #cce0ff",
@@ -61,7 +61,7 @@ export default function SignUp() {
       justifyContent: "center",
     },
     inputArea: {
-      width: "100%",
+      width: "300px",
       gap: "10px",
       display: "flex",
       flexDirection: "column",
@@ -161,27 +161,8 @@ export default function SignUp() {
           </form>
         </div>
       </main>
-      <footer className={styles.footer}>
-        <a href="https://jser.info/" target="_blank" rel="noopener noreferrer">
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          https://jser.info/
-        </a>
-        <a href="https://zenn.dev/" target="_blank" rel="noopener noreferrer">
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          https://zenn.dev/
-        </a>
+      <footer style={inputStyles.footer}>
+        <Footer />
       </footer>
     </div>
   );
