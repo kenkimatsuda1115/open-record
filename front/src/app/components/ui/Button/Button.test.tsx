@@ -25,9 +25,6 @@ describe("Button Component", () => {
     const buttonElement = screen.getByText("スタイルテスト");
     expect(buttonElement).toHaveStyle({ backgroundColor: "rgb(255, 0, 0)" });
   });
-  test("必ず失敗するテスト", () => {
-    expect(true).toBe(false);
-  });
   test("無効なボタンがクリックできないこと", () => {
     const handleClick = vi.fn();
     render(
