@@ -1,20 +1,22 @@
 {
-	"devDependencies": {
-		"husky": "^9.1.6",
-		"lint-staged": "^15.2.10"
-	},
-	"lint-staged": {
-  "front/**/*.ts?(x)": [
-    "cd front && tsc --noEmit",
-    "cd front && eslint --fix",
-    "cd front && prettier --write",
-    "cd front && jest --bail --findRelatedTests"
-  ],
-  "backend/**/*.ts": [
-    "cd backend && tsc --noEmit",
-    "cd backend && eslint --fix",
-    "cd backend && prettier --write",
-    "cd backend && jest --bail --findRelatedTests"
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "test": "vitest run",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.6",
+    "eslint": "^8.56.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
