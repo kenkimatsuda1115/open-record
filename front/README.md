@@ -3,6 +3,7 @@
 テストフレームワークとして[Vitest](https://vitest.dev/)と[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)を採用しています。
 
 主な技術スタック:
+
 - Next.js - Reactベースのフルスタックフレームワーク
 - TypeScript - 型安全な開発環境
 - Vitest - 高速なテストランナー

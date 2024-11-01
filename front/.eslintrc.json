@@ -18,8 +18,5 @@
     "react/no-children-prop": "off",
     "react-hooks/exhaustive-deps": "warn"
   },
-  "ignorePatterns": [
-    ".storybook/**/*",
-    "**/*.stories.tsx"
-  ]
+  "ignorePatterns": [".storybook/**/*", "**/*.stories.tsx"]
 }

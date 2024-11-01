@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off"
+  },
+  "overrides": [
+    {
+      "files": ["front/**/*.ts", "front/**/*.tsx"],
+      "rules": {
+        "react/no-unescaped-entities": "off",
+        "react/no-children-prop": "off",
+        "react-hooks/exhaustive-deps": "warn"
+      }
+    }
+  ],
+  "ignorePatterns": ["front/.storybook/**/*", "front/**/*.stories.tsx", "dist", "node_modules"]
+}

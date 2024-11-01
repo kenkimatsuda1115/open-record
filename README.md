@@ -26,6 +26,7 @@
 ### 技術スタック
 
 #### フロントエンド
+
 - Next.js
   - NextAuth.js (認証)
 - TypeScript
@@ -35,8 +36,8 @@
 - ESLint
 - Prettier
 
-
 #### バックエンド TODO: これから検討
+
 - Node.js
 - Express
 - TypeScript
@@ -48,12 +49,14 @@
 ## 開発環境構築
 
 ### front
+
 ```bash
 cd front
 pnpm install
 ```
 
 ### backend
+
 ```bash
 cd backend
 pnpm install
@@ -68,7 +71,6 @@ cd front
 pnpm dev
 ```
 
-
 ### バックエンド (Node.js)
 
 ```bash
@@ -82,7 +84,6 @@ pnpm dev
 cd backend
 pnpm test
 ```
-
 
 ### TypeScriptのチェック
 

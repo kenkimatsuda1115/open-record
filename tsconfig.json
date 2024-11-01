@@ -1,28 +1,25 @@
 {
-    "compilerOptions": {
-      /* 基本設定 */
-      "target": "es2017",
-      "module": "commonjs",
-      "lib": ["es2017", "dom"],
-      "allowJs": true,
-      "skipLibCheck": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "incremental": true,
-      
-      /* パス設定 */
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["*"]
-      }
-    },
-    "exclude": ["node_modules"],
-    "references": [
-      { "path": "./front" },
-      { "path": "./backend" }
-    ]
-  }
+  "compilerOptions": {
+    /* 基本設定 */
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es2017", "dom"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+
+    /* パス設定 */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "references": [{ "path": "./front" }, { "path": "./backend" }]
+}

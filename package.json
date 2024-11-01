@@ -3,10 +3,14 @@
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "test": "vitest run",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lint": "eslint --fix",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@types/node": "^22.8.6",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "@typescript-eslint/parser": "^8.12.2",
     "eslint": "^8.56.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
@@ -16,7 +20,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write ."
     ]
   }
 }
