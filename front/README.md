@@ -36,3 +36,7 @@ pnpm test
 ```bash
 pnpm tsc
 ```
+
+## .envファイルの設定
+
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
