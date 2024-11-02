@@ -10,8 +10,8 @@
   grid-template-rows: 20px 1fr 20px;
   align-items: center;
   justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
+  min-height: 80svh;
+  padding: 60px;
   gap: 64px;
   font-family: var(--font-geist-sans);
 }
@@ -166,62 +166,11 @@ a.secondary {
     filter: invert();
   }
 }
-.page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
 .loginContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-}
-
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.inputGroup {
-  width: 300px;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.inputGroup input {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-.inputGroup.username {
-  color: #ff0000;
-  background-color: #ffe6e6;
-  border: 1px solid #ffcccc;
-}
-
-.inputGroup.password {
-  color: #0000ff;
-  background-color: #e6f2ff;
-  border: 1px solid #cce0ff;
+  justify-content: center;
 }
 
 .titleGroup {
@@ -249,16 +198,59 @@ a.secondary {
   text-align: center;
 }
 
+.signUpForm {
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputArea {
+  width: 300px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputGroup {
+  width: 300px;
+  border-radius: 5px;
+  padding: 10px;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.inputGroup.username {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  border: 1px solid #ffcccc;
+}
+
+.inputGroup.email {
+  color: #00a400;
+  background-color: #e6ffe6;
+  border: 1px solid #ccffcc;
+}
+
+.inputGroup.password {
+  color: #0000ff;
+  background-color: #e6f2ff;
+  border: 1px solid #cce0ff;
+}
+
 .errorMessage {
   color: #ff0000;
   font-size: 18px;
   display: flex;
-}
-
-.footer {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
