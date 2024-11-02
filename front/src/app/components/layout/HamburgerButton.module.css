@@ -1,0 +1,18 @@
+.hamburger {
+  cursor: pointer;
+  padding: 0.3rem;
+  z-index: calc(var(--header-z-index) + 1);
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: none;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.open {
+  left: 0;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+}

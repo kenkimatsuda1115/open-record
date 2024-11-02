@@ -1,6 +1,8 @@
 import { AuthLayout } from "../../../app/components/layout/AuthLayout";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import React from "react";
+import { HeaderLayout } from "../../../app/components/layout/HeaderLayout";
 
 function Dashboard() {
   const router = useRouter();
@@ -8,17 +10,9 @@ function Dashboard() {
 
   return (
     <AuthLayout>
-      <div>
-        <h1>Second</h1>
-        <p>ユーザー名: {session?.user?.name}</p>
-        <button
-          onClick={() => {
-            router.back();
-          }}
-        >
-          戻る
-        </button>
-      </div>
+      <HeaderLayout>
+        <div>{session?.user?.name}さんのダッシュボード</div>
+      </HeaderLayout>
     </AuthLayout>
   );
 }

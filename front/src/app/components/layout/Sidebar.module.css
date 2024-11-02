@@ -1,0 +1,19 @@
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  left: -250px;
+  width: var(--sidebar-width);
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: var(--sidebar-z-index);
+  padding: 1.3rem;
+  font-size: 1.3rem;
+  gap: 8px;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
