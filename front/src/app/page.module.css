@@ -166,3 +166,99 @@ a.secondary {
     filter: invert();
   }
 }
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputGroup {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.inputGroup input {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.inputGroup.username {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  border: 1px solid #ffcccc;
+}
+
+.inputGroup.password {
+  color: #0000ff;
+  background-color: #e6f2ff;
+  border: 1px solid #cce0ff;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.description {
+  font-size: 18px;
+  text-align: center;
+}
+
+.subTitle {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.errorMessage {
+  color: #ff0000;
+  font-size: 18px;
+  display: flex;
+}
+
+.footer {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

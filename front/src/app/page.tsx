@@ -12,97 +12,6 @@ import { useLogin } from "./page.hook";
  * TODO: ログインAPIを作成する
  */
 export default function Home() {
-  const inputStyles: { [key: string]: React.CSSProperties } = {
-    username: {
-      width: "300px",
-      color: "#ff0000",
-      backgroundColor: "#ffe6e6",
-      border: "1px solid #ffcccc",
-      borderRadius: "5px",
-      padding: "10px",
-      gap: "10px",
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "flex-end",
-    },
-    password: {
-      width: "300px",
-      color: "#0000ff",
-      backgroundColor: "#e6f2ff",
-      border: "1px solid #cce0ff",
-      borderRadius: "5px",
-      padding: "10px",
-      gap: "10px",
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "flex-end",
-    },
-    loginForm: {
-      color: "#000000",
-      backgroundColor: "#ffffff",
-      border: "1px solid #000000",
-      borderRadius: "5px",
-      padding: "10px",
-      gap: "10px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    // 入力フォームエリア
-    inputArea: {
-      gap: "10px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    errorMessage: {
-      color: "#ff0000",
-      fontSize: "18px",
-      display: "flex",
-    },
-    signUpButton: {
-      color: "#000000",
-      backgroundColor: "#ffffff",
-      border: "1px solid #000000",
-      borderRadius: "5px",
-      padding: "2px 10px",
-      gap: "10px",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    titleGroup: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: "10px",
-      padding: "10px",
-    },
-    title: {
-      fontSize: "36px",
-      fontWeight: "bold",
-      textAlign: "center",
-    },
-    description: {
-      fontSize: "18px",
-      fontWeight: "normal",
-      textAlign: "center",
-    },
-    subTitle: {
-      fontSize: "18px",
-      fontWeight: "bold",
-      textAlign: "center",
-    },
-  };
-
-  const isError = false;
-  const LOGIN_ERROR_MESSAGE = "ログインに失敗しました。";
   const { username, setUsername, password, setPassword, error, login, signUp } =
     useLogin();
 
@@ -110,25 +19,16 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.loginContainer}>
-          {/* <div className={styles.imageContainer}>
-            <Image
-              src="/next.png"
-              alt="Login Image"
-              width={300}
-              height={300}
-              priority
-            />
-          </div> */}
-          <div style={inputStyles.titleGroup}>
-            <div style={inputStyles.title}>Open Record</div>
-            <div style={inputStyles.description}>
+          <div className={styles.titleGroup}>
+            <div className={styles.title}>Open Record</div>
+            <div className={styles.description}>
               オープンレコードは、様々な記録を管理するシステムです。
             </div>
-            <div style={inputStyles.subTitle}>ログイン</div>
+            <div className={styles.subTitle}>ログイン</div>
           </div>
 
-          <form className={styles.loginForm} style={inputStyles.inputArea}>
-            <div className={styles.inputGroup} style={inputStyles.username}>
+          <form className={styles.loginForm}>
+            <div className={`${styles.inputGroup} ${styles.username}`}>
               <label htmlFor="username">ユーザー名</label>
               <input
                 type="text"
@@ -139,7 +39,7 @@ export default function Home() {
                 required
               />
             </div>
-            <div className={styles.inputGroup} style={inputStyles.password}>
+            <div className={`${styles.inputGroup} ${styles.password}`}>
               <label htmlFor="password">パスワード</label>
               <input
                 type="password"
@@ -150,43 +50,21 @@ export default function Home() {
                 required
               />
             </div>
-            <Button type="submit" style={inputStyles.loginForm} onClick={login}>
+            <Button type="submit" onClick={login}>
               ログイン
             </Button>
-            {isError && (
-              <div style={inputStyles.errorMessage}>{LOGIN_ERROR_MESSAGE}</div>
+            {error && (
+              <div className={styles.errorMessage}>
+                ログインに失敗しました。
+              </div>
             )}
-            <Button style={inputStyles.signUpButton} onClick={signUp}>
-              新規登録
-            </Button>
+            <Button onClick={signUp}>新規登録</Button>
           </form>
         </div>
       </main>
       <footer className={styles.footer}>
         <Footer />
       </footer>
-      {/* <footer className={styles.footer}>
-        <a href="https://jser.info/" target="_blank" rel="noopener noreferrer">
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          https://jser.info/
-        </a>
-        <a href="https://zenn.dev/" target="_blank" rel="noopener noreferrer">
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          https://zenn.dev/
-        </a>
-      </footer> */}
     </div>
   );
 }
