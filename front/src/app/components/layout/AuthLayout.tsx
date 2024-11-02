@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 interface AuthLayoutProps {
   children: ReactNode;

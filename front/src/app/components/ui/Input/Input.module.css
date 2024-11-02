@@ -1,0 +1,17 @@
+
+.inputGroup {
+  width: 300px;
+  padding: 0px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.inputGroup input {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}

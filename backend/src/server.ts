@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./infrastructure/database/mongoose";
 import authRoutes from "./interfaces/routes/userRoutes";
-// import { errorHandler } from './middleware/errorHandler';
+import { errorHandler } from "./middleware/errorHandler";
 
 dotenv.config();
 
@@ -24,8 +24,8 @@ connectDB();
 // ルート
 app.use("/api", authRoutes);
 
-// // エラーハンドリング
-// app.use(errorHandler);
+// エラーハンドリング
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

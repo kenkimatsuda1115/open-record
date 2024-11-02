@@ -1,26 +1,25 @@
 "use client";
 import React from "react";
 import styles from "./index.module.css";
-import { useSignUp } from "../../app/hooks/useSignUp";
+import { useForgetPassword } from "../../app/hooks/useForgetPassword";
 import Button from "../../app/components/ui/Button/Button";
 import Footer from "../../app/components/ui/Footer/Footer";
 import Input from "../../app/components/ui/Input/Input";
 import { PROJECT_NAME } from "@/utils/constants";
-
-export default function SignUp() {
+export default function ForgetPassword() {
   const {
     username,
     setUsername,
     email,
     setEmail,
-    password,
-    setPassword,
-    passwordConfirm,
-    setPasswordConfirm,
+    newPassword,
+    setNewPassword,
+    newPasswordConfirm,
+    setNewPasswordConfirm,
     error,
-    signUp,
+    forgetPassword,
     goToLogin,
-  } = useSignUp();
+  } = useForgetPassword();
 
   return (
     <div className={styles.page}>
@@ -31,10 +30,10 @@ export default function SignUp() {
             <div className={styles.description}>
               オープンレコードは、様々な記録を管理するシステムです。
             </div>
-            <div className={styles.subTitle}>新規登録</div>
+            <div className={styles.subTitle}>パスワード再設定</div>
           </div>
 
-          <form className={styles.signUpForm}>
+          <form className={styles.forgetPasswordForm}>
             <div className={`${styles.inputGroup} ${styles.username}`}>
               <Input
                 id="username"
@@ -59,12 +58,12 @@ export default function SignUp() {
             </div>
             <div className={`${styles.inputGroup} ${styles.password}`}>
               <Input
-                id="password"
-                name="password"
+                id="newPassword"
+                name="newPassword"
                 type="password"
-                value={password}
-                label="パスワード"
-                onChange={(e) => setPassword(e.target.value)}
+                value={newPassword}
+                label="新しいパスワード"
+                onChange={(e) => setNewPassword(e.target.value)}
                 required
               />
             </div>
@@ -74,37 +73,40 @@ export default function SignUp() {
                 name="passwordConfirm"
                 type="password"
                 label="パスワード確認"
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                value={newPasswordConfirm}
+                onChange={(e) => setNewPasswordConfirm(e.target.value)}
                 required
               />
             </div>
             <Button
               type="submit"
-              onClick={signUp}
+              onClick={forgetPassword}
               disabled={
-                password !== passwordConfirm || !username || !email || !password
+                newPassword !== newPasswordConfirm ||
+                !username ||
+                !email ||
+                !newPassword
               }
               style={{
                 opacity:
-                  password !== passwordConfirm ||
+                  newPassword !== newPasswordConfirm ||
                   !username ||
                   !email ||
-                  !password
+                  !newPassword
                     ? 0.5
                     : 1,
                 cursor:
-                  password !== passwordConfirm ||
+                  newPassword !== newPasswordConfirm ||
                   !username ||
                   !email ||
-                  !password
+                  !newPassword
                     ? "not-allowed"
                     : "pointer",
               }}
             >
-              登録
+              再設定
             </Button>
-            {password !== passwordConfirm && (
+            {newPassword !== newPasswordConfirm && (
               <p className={styles.errorMessage}>パスワードが一致しません</p>
             )}
             {error && <p className={styles.errorMessage}>{error}</p>}

@@ -1,6 +1,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* レイアウト */
+  --header-height: 64px;
+  --sidebar-width: 250px;
+  --header-z-index: 1000;
+  --sidebar-z-index: 999;
+
 }
 
 @media (prefers-color-scheme: dark) {

@@ -10,7 +10,7 @@ function Auth({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
   const router = useRouter();
   // 認証が不要なページのリスト
-  const publicPaths = ["/signUp", "/"];
+  const publicPaths = ["/signUp", "/", "/forgetPassword"];
 
   useEffect(() => {
     if (

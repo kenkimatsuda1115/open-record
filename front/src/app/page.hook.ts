@@ -27,7 +27,10 @@ export const useLogin = () => {
     /** ユーザー登録画面に遷移する */
     router.push("/signUp");
   };
-
+  const goToForgetPassword = async () => {
+    /** パスワード再設定画面に遷移する */
+    router.push("/forgetPassword");
+  };
   return {
     username,
     setUsername,
@@ -36,5 +39,6 @@ export const useLogin = () => {
     error,
     login,
     signUp,
+    goToForgetPassword,
   };
 };

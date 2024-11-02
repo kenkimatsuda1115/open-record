@@ -2,8 +2,9 @@
 import styles from "./page.module.css";
 import Button from "./components/ui/Button/Button";
 import Footer from "./components/ui/Footer/Footer";
+import Input from "./components/ui/Input/Input";
 import { useLogin } from "./page.hook";
-
+import { PROJECT_NAME } from "@/utils/constants";
 /**
  * ログイン画面
  * - ユーザー名とパスワードを入力してログインする
@@ -12,15 +13,23 @@ import { useLogin } from "./page.hook";
  * TODO: ログインAPIを作成する
  */
 export default function Home() {
-  const { username, setUsername, password, setPassword, error, login, signUp } =
-    useLogin();
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    error,
+    login,
+    signUp,
+    goToForgetPassword,
+  } = useLogin();
 
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.loginContainer}>
           <div className={styles.titleGroup}>
-            <div className={styles.title}>Open Record</div>
+            <div className={styles.title}>{PROJECT_NAME}</div>
             <div className={styles.description}>
               オープンレコードは、様々な記録を管理するシステムです。
             </div>
@@ -29,22 +38,22 @@ export default function Home() {
 
           <form className={styles.loginForm}>
             <div className={`${styles.inputGroup} ${styles.username}`}>
-              <label htmlFor="username">ユーザー名</label>
-              <input
-                type="text"
+              <Input
                 id="username"
                 name="username"
+                type="text"
+                label="ユーザー名"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </div>
             <div className={`${styles.inputGroup} ${styles.password}`}>
-              <label htmlFor="password">パスワード</label>
-              <input
-                type="password"
+              <Input
                 id="password"
                 name="password"
+                type="password"
+                label="パスワード"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -59,6 +68,7 @@ export default function Home() {
               </div>
             )}
             <Button onClick={signUp}>新規登録</Button>
+            <Button onClick={goToForgetPassword}>パスワード再設定</Button>
           </form>
         </div>
       </main>

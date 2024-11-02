@@ -66,4 +66,30 @@ export class MongoUserRepository implements UserRepository {
       user.updatedAt,
     );
   }
+
+  async updatePassword(userId: number, hashedPassword: string): Promise<User> {
+    // パスワードを更新する
+
+    const user = await UserModel.updateOne(
+      { id: userId }, // ユーザーを特定するための条件
+      {
+        $set: {
+          hashedPassword: hashedPassword,
+          updatedAt: new Date(),
+        },
+      },
+    );
+    const updatedUser = await UserModel.findOne({ id: userId });
+    if (!updatedUser) throw new Error("ユーザーが見つかりません");
+    console.log("[[[[updatedUser]]]]: ", updatedUser);
+    // パスワードを更新したユーザーを返す
+    return new User(
+      updatedUser.id,
+      updatedUser.username,
+      updatedUser.email,
+      updatedUser.hashedPassword,
+      updatedUser.createdAt,
+      updatedUser.updatedAt,
+    );
+  }
 }
