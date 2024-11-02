@@ -1,1 +1,1 @@
-export const PROJECT_NAME = "open-record";
+export const PROJECT_NAME = "Open-Record";

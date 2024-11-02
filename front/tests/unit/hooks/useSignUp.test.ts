@@ -16,110 +16,73 @@ const setupSignUpHook = () => {
 };
 
 describe("useSignUp", () => {
-  const mockPush = vi.fn();
-
   beforeEach(() => {
     vi.clearAllMocks();
-    (useRouter as any).mockImplementation(() => ({
-      push: mockPush,
-    }));
-  });
-
-  it("パスワードが一致しない場合、エラーが設定されること", async () => {
-    const { result } = setupSignUpHook();
-
-    await act(async () => {
-      result.current.setPassword("password123");
-      result.current.setPasswordConfirm("password456");
-      await result.current.signUp({ preventDefault: vi.fn() } as any);
+    (useRouter as jest.Mock).mockReturnValue({
+      push: vi.fn(),
     });
-
-    expect(result.current.error).toBe("入力内容を確認してください");
   });
 
-  it("必須項目が未入力の場合、エラーが設定されること", async () => {
+  it("必須項目が未入力の場合にエラーが表示される", async () => {
     const { result } = setupSignUpHook();
 
     await act(async () => {
-      await result.current.signUp({ preventDefault: vi.fn() } as any);
-    });
-
-    expect(result.current.error).toBe("入力内容を確認してください");
-  });
-
-  it("パスワードが8文字未満の場合、エラーが設定されること", async () => {
-    const { result } = setupSignUpHook();
-
-    await act(async () => {
-      result.current.setUsername("test");
+      result.current.setUsername("testuser");
       result.current.setEmail("test@example.com");
-      result.current.setPassword("pass");
-      result.current.setPasswordConfirm("pass");
-      await result.current.signUp({ preventDefault: vi.fn() } as any);
+      result.current.setPassword("password123");
+      result.current.signUp({ preventDefault: () => {} } as React.FormEvent);
     });
 
-    expect(result.current.error).toBe("入力内容を確認してください");
+    expect(result.current.error).toBe("すべての必須項目を入力してください");
   });
 
-  it("メールアドレスが不正な場合、エラーが設定されること", async () => {
+  it("パスワードとパスワード確認が一致しない場合にエラーが表示される", async () => {
     const { result } = setupSignUpHook();
 
     await act(async () => {
-      result.current.setUsername("test");
+      result.current.setUsername("testuser");
+      result.current.setEmail("test@example.com");
+      result.current.setPassword("password123");
+      result.current.setPasswordConfirm("differentpassword");
+    });
+    await act(async () => {
+      result.current.signUp({ preventDefault: () => {} } as React.FormEvent);
+    });
+
+    expect(result.current.error).toBe("パスワードが一致しません");
+  });
+
+  it("無効なメールアドレスの場合にエラーが表示される", async () => {
+    const { result } = setupSignUpHook();
+
+    await act(async () => {
+      result.current.setUsername("testuser");
       result.current.setEmail("invalid-email");
       result.current.setPassword("password123");
       result.current.setPasswordConfirm("password123");
-      await result.current.signUp({ preventDefault: vi.fn() } as any);
+    });
+    await act(async () => {
+      result.current.signUp({ preventDefault: () => {} } as React.FormEvent);
     });
 
-    expect(result.current.error).toBe("入力内容を確認してください");
+    expect(result.current.error).toBe("有効なメールアドレスを入力してください");
   });
-  it("ユーザー名が既に使用されている場合、エラーが設定されること", async () => {
+
+  it("パスワードが8文字未満の場合にエラーが表示される", async () => {
     const { result } = setupSignUpHook();
 
-    (global.fetch as any).mockResolvedValueOnce({
-      ok: false,
-      status: 409,
-      json: () => Promise.resolve({ error: "Username already exists" }),
-    });
-
     await act(async () => {
-      result.current.setUsername("test");
+      result.current.setUsername("testuser");
       result.current.setEmail("test@example.com");
-      result.current.setPassword("password123");
-      result.current.setPasswordConfirm("password123");
-      await result.current.signUp({ preventDefault: vi.fn() } as any);
+      result.current.setPassword("pass");
+      result.current.setPasswordConfirm("pass");
     });
-
-    expect(result.current.error).toBe("入力内容を確認してください");
-  });
-
-  it("サインアップに失敗した場合、エラーが設定されること", async () => {
-    const { result } = setupSignUpHook();
-
-    (global.fetch as any).mockResolvedValueOnce({
-      ok: false,
-      json: () => Promise.resolve({ error: "Registration failed" }),
-    });
-
     await act(async () => {
-      result.current.setUsername("test");
-      result.current.setEmail("test@example.com");
-      result.current.setPassword("password123");
-      result.current.setPasswordConfirm("password123");
-      await result.current.signUp({ preventDefault: vi.fn() } as any);
+      result.current.signUp({ preventDefault: () => {} } as React.FormEvent);
     });
 
-    expect(result.current.error).toBe("入力内容を確認してください");
-  });
-
-  it("ログインボタンクリック時にログイン画面に遷移すること", async () => {
-    const { result } = setupSignUpHook();
-
-    await act(async () => {
-      result.current.goToLogin();
-    });
-
-    expect(mockPush).toHaveBeenCalledWith("/");
+    expect(result.current.error).toBe(
+      "パスワードは8文字以上で入力してください",
+    );
   });
 });

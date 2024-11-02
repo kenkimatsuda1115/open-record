@@ -2,9 +2,13 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Dashboard from "../../../src/pages/dashboard/[username]";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import React from "react";
+
+// CSSファイルのモック
+vi.mock("@/app/globals.css", () => ({}));
 
 // next/routerのモック
 vi.mock("next/router", () => ({
@@ -15,6 +19,22 @@ vi.mock("next/router", () => ({
 vi.mock("next-auth/react", () => ({
   useSession: vi.fn(),
 }));
+
+// signOutのモックを設定
+vi.mock("next-auth/react", async () => {
+  const actual = await vi.importActual("next-auth/react");
+  return {
+    ...actual,
+    signOut: vi.fn(),
+    useSession: () => ({
+      data: {
+        user: {
+          name: "test",
+        },
+      },
+    }),
+  };
+});
 
 describe("Dashboard", () => {
   const mockBack = vi.fn();
@@ -27,13 +47,6 @@ describe("Dashboard", () => {
         username: "test",
       },
     }));
-    (useSession as any).mockImplementation(() => ({
-      data: {
-        user: {
-          name: "test",
-        },
-      },
-    }));
   });
 
   it("ユーザー名が表示されること", () => {
@@ -41,10 +54,10 @@ describe("Dashboard", () => {
     expect(screen.getByText("ユーザー名: test")).toBeInTheDocument();
   });
 
-  it("戻るボタンをクリックすると前の画面に戻ること", () => {
+  it("ログアウトボタンをクリックするとログアウトすること", () => {
     render(<Dashboard />);
-    const backButton = screen.getByText("戻る");
-    fireEvent.click(backButton);
-    expect(mockBack).toHaveBeenCalled();
+    const logoutButton = screen.getByText("ログアウト");
+    fireEvent.click(logoutButton);
+    expect(signOut).toHaveBeenCalledWith({ callbackUrl: "/" });
   });
 });
