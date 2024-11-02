@@ -6,6 +6,10 @@ export interface IUser {
   username: string;
   hashedPassword: string;
   email: string;
+  nickname: string;
+  bio: string;
+  location: string;
+  website: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -15,6 +19,10 @@ const userSchema = new mongoose.Schema<IUser>({
   username: { type: String, required: true, unique: true },
   hashedPassword: { type: String, required: true, minlength: 8 },
   email: { type: String, required: true, unique: true },
+  nickname: { type: String, default: "" },
+  bio: { type: String, default: "" },
+  location: { type: String, default: "" },
+  website: { type: String, default: "" },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

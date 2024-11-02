@@ -1,20 +1,25 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
+import { useSidebar } from "../../hooks/layout/Sidebar";
 
 interface SidebarProps {
   isOpen: boolean;
 }
 
 export const Sidebar = ({ isOpen }: SidebarProps) => {
+  const { navigateToProfile, navigateToDashboard } = useSidebar();
   return (
     <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-      <nav>
-        <ul>
-          <li>メニュー1</li>
-          <li>メニュー2</li>
-          <li>メニュー3</li>
-        </ul>
-      </nav>
+      <div className={styles.sidebarItems}>
+        <div className={styles.sidebarItem} onClick={navigateToDashboard}>
+          ホーム
+        </div>
+        <div className={styles.sidebarItem} onClick={navigateToProfile}>
+          プロフィール
+        </div>
+        <div className={styles.sidebarItem}>メニュー2</div>
+        <div className={styles.sidebarItem}>メニュー3</div>
+      </div>
     </div>
   );
 };

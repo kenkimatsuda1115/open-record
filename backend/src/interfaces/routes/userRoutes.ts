@@ -18,4 +18,12 @@ router.post("/auth/forget-password", (req, res) => {
   userController.forgetPassword(req, res);
 });
 
+router.get("/users/:username", (req, res) => {
+  userController.getUserProfile(req, res);
+});
+
+router.put("/users/:username", (req, res) => {
+  userController.updateUserProfile(req, res);
+});
+
 export default router;

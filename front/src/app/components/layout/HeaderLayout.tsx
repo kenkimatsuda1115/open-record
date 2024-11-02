@@ -6,9 +6,9 @@ import Button from "../ui/Button/Button";
 import styles from "./HeaderLayout.module.css";
 import { PROJECT_NAME } from "../../../utils/constants";
 import { HamburgerButton } from "./HamburgerButton";
+import { useHeaderLayout } from "../../hooks/layout/HeaderLayout";
 import { Sidebar } from "./Sidebar";
 import { useState } from "react";
-
 interface HeaderLayoutProps {
   children: ReactNode;
 }
@@ -16,6 +16,7 @@ interface HeaderLayoutProps {
 export function HeaderLayout({ children }: HeaderLayoutProps) {
   const { data: session } = useSession();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { navigateToDashboard } = useHeaderLayout();
   return (
     <div className={styles.container}>
       <Sidebar isOpen={isSidebarOpen} />
@@ -25,7 +26,9 @@ export function HeaderLayout({ children }: HeaderLayoutProps) {
             isOpen={isSidebarOpen}
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           />
-          <h1 className={styles.title}>{PROJECT_NAME}</h1>
+          <h1 className={styles.title} onClick={navigateToDashboard}>
+            {PROJECT_NAME}
+          </h1>
         </div>
         <div className={styles.username}>ユーザー名: {session?.user?.name}</div>
 

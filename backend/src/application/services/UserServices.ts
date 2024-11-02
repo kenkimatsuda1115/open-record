@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
-import { User } from "../../domain/entities/User";
+import { User, UserProfile } from "../../domain/entities/User";
 import { UserRepository } from "../../domain/repositories/userRepository";
 import { MongoUserRepository } from "../../infrastructure/repositories/MongoUserRepository";
+
 export class UserService {
   private readonly userRepository: UserRepository;
 
@@ -93,5 +94,16 @@ export class UserService {
     const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
     return this.userRepository.updatePassword(user.getId(), hashedPassword);
+  }
+
+  async getUserProfile(username: string): Promise<User | null> {
+    return this.userRepository.getUserProfile(username);
+  }
+
+  async updateUserProfile(
+    username: string,
+    profile: Partial<UserProfile>,
+  ): Promise<User | null> {
+    return this.userRepository.updateUserProfile(username, profile);
   }
 }

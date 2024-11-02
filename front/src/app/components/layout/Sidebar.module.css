@@ -6,7 +6,9 @@
   width: var(--sidebar-width);
   background-color: #fff;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: left 0.3s ease;
+  transition:
+    left 0.3s ease,
+    box-shadow 0.3s ease;
   z-index: var(--sidebar-z-index);
   padding: 1.3rem;
   font-size: 1.3rem;
@@ -15,4 +17,18 @@
 
 .sidebar.open {
   left: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebarItem {
+  cursor: pointer;
+}
+
+.sidebarItems {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #777;
 }
