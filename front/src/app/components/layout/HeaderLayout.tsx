@@ -1,10 +1,10 @@
-import "@/app/globals.css";
+import "../../globals.css";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import React, { ReactNode } from "react";
 import Button from "../ui/Button/Button";
 import styles from "./HeaderLayout.module.css";
-import { PROJECT_NAME } from "@/utils/constants";
+import { PROJECT_NAME } from "../../../utils/constants";
 import { HamburgerButton } from "./HamburgerButton";
 import { Sidebar } from "./Sidebar";
 import { useState } from "react";

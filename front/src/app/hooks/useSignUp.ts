@@ -14,21 +14,28 @@ export const useSignUp = () => {
 
   const signUp = async (e: React.FormEvent) => {
     e.preventDefault(); // フォームのデフォルト送信を防ぐ
+
+    // 必須項目のチェック
+    if (!username || !email || !password || !passwordConfirm) {
+      setError("すべての必須項目を入力してください");
+      return;
+    }
+
+    // パスワードとパスワード確認の一致チェック
     if (password !== passwordConfirm) {
       setError("パスワードが一致しません");
       return;
     }
-    // TODO: 入力内容のチェック
-    if (username === "" || email === "" || password === "") {
-      setError("入力内容を確認してください");
+
+    // メールアドレスの検証
+    if (email.includes("@") === false) {
+      setError("有効なメールアドレスを入力してください");
       return;
     }
+
+    // パスワードの検証
     if (password.length < 8) {
       setError("パスワードは8文字以上で入力してください");
-      return;
-    }
-    if (email.includes("@") === false) {
-      setError("メールアドレスが不正です");
       return;
     }
 

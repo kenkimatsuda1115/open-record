@@ -10,7 +10,6 @@
 - Jest - テストフレームワーク
 - bcrypt - パスワードハッシュ化
 
-
 ### mongoDBの設定
 
 #### mongoDBを起動 (Mac)
@@ -26,6 +25,7 @@ use <database_name（ex. open-record）>
 ```
 
 ## プロジェクト構造
+
 src/
 ├── application/ # アプリケーション層
 │ └── services/ # ユースケースの実装
@@ -42,7 +42,6 @@ src/
 │ └── errorHandler.ts # エラーハンドリング
 └── routes/ # ルーティング
 
-
 ## ドメイン駆動設計(DDD)のルール
 
 - ドメイン層はビジネスロジックを表現する
@@ -51,6 +50,7 @@ src/
 - インターフェース層は外部APIとのインターフェースを表現する
 
 ## 環境構築
+
 ### 1. 必要なパッケージのインストール
 
 ```bash
@@ -70,5 +70,6 @@ MONGODB_URI=<MongoDBのURI>
 PORT=<ポート番号（ex. 3001）>
 
 ### 3. データベースの準備
+
 - MongoDBをローカルにインストールするか、MongoDBアトラスのアカウントを用意してください
 - `.env`ファイルにMONGODB_URIを設定してください
