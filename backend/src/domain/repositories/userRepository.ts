@@ -1,4 +1,4 @@
-import { User } from "../entities/User";
+import { User, UserProfile } from "../entities/User";
 
 export interface UserRepository {
   save(user: User): Promise<User>;
@@ -6,4 +6,9 @@ export interface UserRepository {
   findById(id: string): Promise<User | null>;
   findByUsername(username: string): Promise<User | null>;
   updatePassword(userId: number, hashedPassword: string): Promise<User>;
+  getUserProfile(username: string): Promise<User | null>;
+  updateUserProfile(
+    username: string,
+    profile: Partial<UserProfile>,
+  ): Promise<User | null>;
 }

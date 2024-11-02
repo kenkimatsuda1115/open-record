@@ -13,7 +13,12 @@ function Auth({ children }: { children: React.ReactNode }) {
   const publicPaths = ["/signUp", "/", "/forgetPassword"];
 
   useEffect(() => {
-    if (
+    if (status === "loading") return;
+    if (status === "authenticated" && router.pathname === "/") {
+      // 認証済みの場合はダッシュボードにリダイレクト
+      router.push(`/dashboard/${session.user?.name}`);
+    } else if (
+      // 認証されていない場合はログインページにリダイレクト
       status === "unauthenticated" &&
       !publicPaths.includes(router.pathname)
     ) {

@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -14,12 +14,17 @@ export function AuthLayout({ children }: AuthLayoutProps) {
   const router = useRouter();
   const { username } = router.query;
 
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
   if (status === "loading") {
     return <div>Loading...</div>;
   }
 
   if (!session) {
-    router.push("/auth/login");
     return null;
   }
 

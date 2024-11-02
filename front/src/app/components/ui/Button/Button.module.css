@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .buttonPrimary {
@@ -22,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .buttonError {
@@ -35,6 +37,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .buttonSuccess {
@@ -48,6 +51,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .buttonInfo {
@@ -61,4 +65,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  cursor: pointer;
 }

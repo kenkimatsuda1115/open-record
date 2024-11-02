@@ -70,4 +70,42 @@ export class UserController {
       });
     }
   };
+
+  public getUserProfile = async (
+    req: Request,
+    res: Response,
+  ): Promise<void> => {
+    try {
+      const { username } = req.params;
+      const user = await this.userService.getUserProfile(username);
+      res.status(200).json({
+        success: true,
+        data: user,
+      });
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        error: (error as Error).message,
+      });
+    }
+  };
+
+  public updateUserProfile = async (
+    req: Request,
+    res: Response,
+  ): Promise<void> => {
+    try {
+      const { username } = req.params;
+      const user = await this.userService.updateUserProfile(username, req.body);
+      res.status(200).json({
+        success: true,
+        data: user,
+      });
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        error: (error as Error).message,
+      });
+    }
+  };
 }
