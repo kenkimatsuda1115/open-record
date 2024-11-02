@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
-import { useSidebar } from "../../hooks/layout/Sidebar";
+import { useSidebar } from "../../hooks/layout/useSidebar";
 
 interface SidebarProps {
   isOpen: boolean;

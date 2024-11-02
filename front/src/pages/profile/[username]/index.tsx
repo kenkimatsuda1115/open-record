@@ -1,8 +1,9 @@
+import React from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { HeaderLayout } from "../../../app/components/layout/HeaderLayout";
-import { useProfile } from "../../../app/hooks/profile";
+import { useProfile } from "../../../app/hooks/useProfile";
 import styles from "./index.module.css";
 
 interface UserProfile {

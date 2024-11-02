@@ -6,7 +6,7 @@ import Button from "../ui/Button/Button";
 import styles from "./HeaderLayout.module.css";
 import { PROJECT_NAME } from "../../../utils/constants";
 import { HamburgerButton } from "./HamburgerButton";
-import { useHeaderLayout } from "../../hooks/layout/HeaderLayout";
+import { useHeaderLayout } from "../../hooks/layout/useHeaderLayout";
 import { Sidebar } from "./Sidebar";
 import { useState } from "react";
 interface HeaderLayoutProps {
