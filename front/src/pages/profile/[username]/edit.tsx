@@ -1,9 +1,10 @@
+import React from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { HeaderLayout } from "../../../app/components/layout/HeaderLayout";
 import styles from "./edit.module.css";
-import { useProfileEdit } from "../../../app/hooks/profileEdit";
+import { useProfileEdit } from "../../../app/hooks/useProfileEdit";
 
 interface UserProfile {
   username: string;
