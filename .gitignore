@@ -163,3 +163,17 @@ pnpm-debug.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Uploaded files
+storage/**/*
+!storage/.gitkeep
+!storage/*/
+!storage/*/.gitkeep
+
+# Keep directory structure but ignore contents
+storage/documents/*
+!storage/documents/.gitkeep
+storage/spreadsheets/*
+!storage/spreadsheets/.gitkeep
+storage/temp/*
+!storage/temp/.gitkeep
