@@ -164,16 +164,17 @@ pnpm-debug.log*
 ehthumbs.db
 Thumbs.db
 
+# storage関連の設定
 # Uploaded files
-storage/**/*
-!storage/.gitkeep
-!storage/*/
-!storage/*/.gitkeep
+backend/src/infrastructure/storage/**/*
+!backend/src/infrastructure/storage/.gitkeep
+!backend/src/infrastructure/storage/*/
+!backend/src/infrastructure/storage/*/.gitkeep
 
 # Keep directory structure but ignore contents
-storage/documents/*
-!storage/documents/.gitkeep
-storage/spreadsheets/*
-!storage/spreadsheets/.gitkeep
-storage/temp/*
-!storage/temp/.gitkeep
+backend/src/infrastructure/storage/documents/*
+!backend/src/infrastructure/storage/documents/.gitkeep
+backend/src/infrastructure/storage/spreadsheets/*
+!backend/src/infrastructure/storage/spreadsheets/.gitkeep
+backend/src/infrastructure/storage/temp/*
+!backend/src/infrastructure/storage/temp/.gitkeep
