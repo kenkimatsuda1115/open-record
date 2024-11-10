@@ -171,10 +171,14 @@ backend/src/infrastructure/storage/**/*
 !backend/src/infrastructure/storage/*/
 !backend/src/infrastructure/storage/*/.gitkeep
 
-# Keep directory structure but ignore contents
+# Documents
 backend/src/infrastructure/storage/documents/*
 !backend/src/infrastructure/storage/documents/.gitkeep
+
+# Spreadsheets
 backend/src/infrastructure/storage/spreadsheets/*
 !backend/src/infrastructure/storage/spreadsheets/.gitkeep
+
+# Temp
 backend/src/infrastructure/storage/temp/*
 !backend/src/infrastructure/storage/temp/.gitkeep
