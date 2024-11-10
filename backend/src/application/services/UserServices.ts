@@ -37,6 +37,10 @@ export class UserService {
       username,
       email,
       hashedPassword,
+      "",
+      "",
+      "",
+      "",
       new Date(),
       new Date(),
     );
